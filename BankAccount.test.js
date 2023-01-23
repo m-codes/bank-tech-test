@@ -21,7 +21,8 @@ describe("Bank Account", () => {
 
   it("returns the balance after an incorrect deposit", () => {
     const account = new BankAccount();
-    account.deposit(-2)
+    expect(() => account.deposit(-2)).toThrow("The amount to deposit must be a number greater than 0.");
     expect(account.printBalance()).toEqual(0);
   });
 });
+

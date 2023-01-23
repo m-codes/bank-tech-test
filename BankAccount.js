@@ -4,7 +4,11 @@ class BankAccount {
   }
 
   deposit(amount){
-    if (amount > 0) this.balance += amount
+    if (typeof(amount) === "number" && amount > 0){
+      this.balance += amount
+    } else {
+      throw new Error("The amount to deposit must be a number greater than 0.")
+    }
   }
 
   printBalance(){
