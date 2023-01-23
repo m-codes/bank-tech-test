@@ -1,9 +1,12 @@
 class BankAccount {
-  constructor() {}
-
-  statement() {
-    return 0
+  constructor() {
+    this.balance = 0;
   }
+
+  printBalance(){
+    return this.balance;
+  }
+
 }
 
 module.exports = BankAccount;

@@ -1,16 +1,10 @@
-const BankAccount = require("./BankAccount.js")
+const BankAccount = require("./BankAccount");
 
-describe("Bank Account", () =>{
-
-    beforeEach(() => {
-
-    });
-
-    it("creates a bank account object", () => {
-        const account = new BankAccount();
-        expect(account.statement()).toEqual(0)
-
-
-    });
-
+describe("Bank Account", () => {
+  
+  it("does returns the initial balance", () => {
+    const account = new BankAccount();
+    expect(account.printBalance()).toEqual(0)
+  })
+  
 });
