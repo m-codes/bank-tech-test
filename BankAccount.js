@@ -4,7 +4,7 @@ class BankAccount {
   }
 
   deposit(amount){
-    this.balance += amount
+    if (amount > 0) this.balance += amount
   }
 
   printBalance(){
