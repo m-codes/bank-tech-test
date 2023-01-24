@@ -4,21 +4,21 @@ describe("Bank Account", () => {
   // balance tests
   it("returns the initial balance", () => {
     const account = new BankAccount();
-    expect(account.printBalance()).toEqual(0);
+    expect(account.printBalance()).toEqual(0.00);
   });
 
   // deposit tests
   it("returns the balance after a single deposit", () => {
     const account = new BankAccount();
     account.deposit(10);
-    expect(account.printBalance()).toEqual(10);
+    expect(account.printBalance()).toEqual(10.00);
   });
 
   it("returns the balance after multiple deposits", () => {
     const account = new BankAccount();
     account.deposit(10);
     account.deposit(5);
-    expect(account.printBalance()).toEqual(15);
+    expect(account.printBalance()).toEqual(15.00);
   });
 
   it("throws an error when given invalid deposit amount", () => {
@@ -26,7 +26,7 @@ describe("Bank Account", () => {
     expect(() => account.deposit(-2)).toThrow(
       "Deposit amount must be a number greater than 0."
     );
-    expect(account.printBalance()).toEqual(0);
+    expect(account.printBalance()).toEqual(0.00);
   });
 
   it("throws an error when given invalid deposit type", () => {
@@ -34,7 +34,7 @@ describe("Bank Account", () => {
     expect(() => account.deposit("hello")).toThrow(
       "Deposit amount must be a number greater than 0."
     );
-    expect(account.printBalance()).toEqual(0);
+    expect(account.printBalance()).toEqual(0.00);
   });
 
   // withdraw tests
@@ -42,7 +42,7 @@ describe("Bank Account", () => {
     const account = new BankAccount();
     account.deposit(10);
     account.withdraw(5);
-    expect(account.printBalance()).toEqual(5);
+    expect(account.printBalance()).toEqual(5.00);
   });
 
   it("returns the balance after mutiple withdrawals", () => {
@@ -50,7 +50,7 @@ describe("Bank Account", () => {
     account.deposit(10);
     account.withdraw(5);
     account.withdraw(3);
-    expect(account.printBalance()).toEqual(2);
+    expect(account.printBalance()).toEqual(2.00);
   });
 
   it("throws an error when given invalid withdrawal amount", () => {
@@ -79,6 +79,34 @@ describe("Bank Account", () => {
     const account = new BankAccount();
     account.deposit(50);
     account.withdraw(50)
-    expect(account.printBalance()).toEqual(0)
+    expect(account.printBalance()).toEqual(0.00)
+  });
+
+  it("prints the statement header", () => {
+    const account = new BankAccount();
+    expect(account.printHeader()).toEqual("date || credit || debit || balance\n");
+  });
+
+  // it("prints the statement new line", () => {
+  //   const account = new BankAccount();
+  //   expect(account.printNewLine()).toEqual("date || credit || debit || balance\n");
+  // });
+
+  it("prints the statement new line", () => {
+    const account = new BankAccount();
+    account.deposit(1000);
+    account.deposit(2000);
+    account.withdraw(500);
+    expect(account.printStatement()).toEqual(
+      `date || credit || debit || balance\n
+      24/01/2023 || || 500.00 || 2500.00
+      24/01/2023 || 2000.00 || || 3000.00
+      24/01/2023 || 1000.00 || || 1000.00`
+      )
+
+
+ 
+
+
   });
 });
