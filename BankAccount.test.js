@@ -99,9 +99,9 @@ describe("Bank Account", () => {
     account.withdraw(500);
     expect(account.printStatement()).toEqual(
       "date || credit || debit || balance\n" +
-      "25/01/2023 || || 500.00 || 2500.00\n" +
-      "25/01/2023 || 2000.00 || || 3000.00\n" +
-      "25/01/2023 || 1000.00 || || 1000.00"
+      `${new Date().toLocaleDateString("en-GB")} || || 500.00 || 2500.00\n` +
+      `${new Date().toLocaleDateString("en-GB")} || 2000.00 || || 3000.00\n` +
+      `${new Date().toLocaleDateString("en-GB")} || 1000.00 || || 1000.00`
       )
   });
 });
