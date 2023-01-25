@@ -10,7 +10,7 @@ class BankAccount {
       this.statement.push(
         `${this.printDate()} || ${parseFloat(amount).toFixed(
           2
-        )} || || ${parseFloat(this.balance)}`
+        )} || || ${parseFloat(this.printBalance()).toFixed(2)}`
       );
       // console.log(this.statement)
     } else {
@@ -24,7 +24,7 @@ class BankAccount {
       this.statement.push(
         `${this.printDate()} || || ${parseFloat(amount).toFixed(
           2
-        )} || ${parseFloat(this.balance)}`
+        )} || ${parseFloat(this.printBalance()).toFixed(2)}`
       );
       // console.log(this.statement)
     } else {
@@ -47,9 +47,11 @@ class BankAccount {
   }
 
   printStatement() {
-    const formattedStatement = this.statement.forEach( i => i.join("\n")).reverse()
-    // return `${this.printHeader()}${this.statement.reverse()}`;
-    return formattedStatement;
+    const formattedStatement = this.statement.reverse().join("\n");
+    const fullStatement = this.printHeader().concat(formattedStatement);
+    return fullStatement;
+
+
   }
 }
 
