@@ -10,29 +10,37 @@ class BankAccount {
     if (typeof amount === "number" && amount > 0) {
       // make the transaction
       this.balance += amount;
-      // add the transaction to the statement array
-      this.statement.push(
-        `${this.printDate()} || ${parseFloat(amount).toFixed(2)} || || ${parseFloat(this.printBalance()).toFixed(2)}`
-      );
+      this.addDepositLine(amount);
     } else {
       throw new Error("Deposit amount must be a number greater than 0.");
     }
   }
 
   withdraw(amount) {
-    // check if the amount is valid 
+    // check if the amount is valid and does not exceed the balance
     if (typeof amount === "number" && amount > 0 && amount <= this.balance) {
       // make the transaction
       this.balance -= amount;
-      // add the transaction to the statement array
-      this.statement.push(
-        `${this.printDate()} || || ${parseFloat(amount).toFixed(2)} || ${parseFloat(this.printBalance()).toFixed(2)}`
-      );
+      this.addWithdrawLine(amount);
     } else {
       throw new Error(
         "Withdrawal amount must be a positive number that do not exceed the balance."
       );
     }
+  }
+
+  addWithdrawLine(amount) {
+    // add the transaction to the statement array
+    this.statement.push(
+      `${this.printDate()} || || ${parseFloat(amount).toFixed(2)} || ${parseFloat(this.printBalance()).toFixed(2)}`
+    );
+  }
+
+  addDepositLine(amount) {
+    // add the transaction to the statement array
+    this.statement.push(
+      `${this.printDate()} || ${parseFloat(amount).toFixed(2)} || || ${parseFloat(this.printBalance()).toFixed(2)}`
+    );
   }
 
   printBalance() {
