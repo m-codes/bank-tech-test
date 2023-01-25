@@ -6,14 +6,14 @@ Requirements and acceptance criteria can be found in bank_tech_test.md
 ### How to use:
 
 ```
-> cd bank-tech-test
-> node
-> const BankAccount = require("./BankAccount.js");
-> const myBankAccount = new BankAccount();
-> myBankAccount.deposit(1000);
-> myBankAccount.deposit(2000);
-> myBankAccount.withdraw(500);
-> myBankAccount.printStatement();
+cd bank-tech-test
+node
+const BankAccount = require("./BankAccount.js");
+const myBankAccount = new BankAccount();
+myBankAccount.deposit(1000);
+myBankAccount.deposit(2000);
+myBankAccount.withdraw(500);
+myBankAccount.printStatement();
 ```
 
 Expected output:
