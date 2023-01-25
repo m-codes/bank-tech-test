@@ -82,16 +82,13 @@ describe("Bank Account", () => {
     expect(account.printBalance()).toEqual(0.00)
   });
 
+  // header statement test
   it("prints the statement header", () => {
     const account = new BankAccount();
     expect(account.printHeader()).toEqual("date || credit || debit || balance\n");
   });
 
-  // it("prints the statement new line", () => {
-  //   const account = new BankAccount();
-  //   expect(account.printNewLine()).toEqual("date || credit || debit || balance\n");
-  // });
-
+  // full statement test
   it("prints the full statement", () => {
     const account = new BankAccount();
     account.deposit(1000);
